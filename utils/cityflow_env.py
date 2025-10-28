@@ -7,6 +7,7 @@ import os
 import cityflow as engine
 import time
 from multiprocessing import Process
+from new_utils import get_adj_mat
 
 
 class Intersection:
@@ -798,3 +799,6 @@ class CityFlowEnv:
         for key, value in lanes_length_dict.items():
             lane_normalize_factor[key] = value / min_length
         return lane_normalize_factor, lanes_length_dict
+
+    def get_adj_mask(self):
+        return get_adj_mat(self.path_to_work_directory, self.dic_traffic_env_conf)
